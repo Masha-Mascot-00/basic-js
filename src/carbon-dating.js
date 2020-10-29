@@ -13,7 +13,7 @@ module.exports = function dateSample(sampleActivity) {
     }
     const k = 0.693 / HALF_LIFE_PERIOD;
     const ratio = Math.log(sampleActivity / MODERN_ACTIVITY);
-    var result = Math.ceil(ratio / k);
+    const result = Math.ceil(ratio / k);
     if(Number.isFinite(result)){
       return result;
     }
