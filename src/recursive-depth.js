@@ -1,30 +1,25 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = class DepthCalculator {
-  calculateDepth(/* array */) {
-    throw new CustomError('Not implemented');
-  // remove line with error and write your code here
-    /* let current = this;
-    let depth = current.depth;
-    let maxDepth = 1;
-
-    if (current.depth === undefined) {
-      current.depth = 0;
+  calculateDepth(array, currentDeapth, maxDeapth) {
+    //throw new CustomError('Not implemented');
+    // remove line with error and write your code here
+    if(currentDeapth === undefined){
+      currentDeapth = 0;
+    }
+    if(maxDeapth === undefined){
+      this.maxDeapth = 1;
+    }
+    currentDeapth++;
+    if (currentDeapth > this.maxDeapth) {
+      this.maxDeapth = currentDeapth;
     }
     array.forEach((element) => {
       if (Array.isArray(element)) {
-        current.depth = current.depth + 1;
-        current.calculateDepth(element);
-      } else {
-        depth = current.depth;
-        if (depth > maxDepth) {
-          maxDepth = depth;
-        } else {
-          depth = maxDepth;
-        }
+        this.calculateDepth(element, currentDeapth, this.maxDeapth);
       }
     });
-    //depth = current.depth;
-    return maxDepth; */
+
+    return this.maxDeapth;
   }
 };
